@@ -36,6 +36,8 @@ const addLine = (req, res, body) => {
     }
 };
 
+// Add function for sending daily rizz emails
+
 
 const findTheRightLine = (req, res) => {
     const data = Rizz.findTheRightLine();
