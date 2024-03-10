@@ -3,6 +3,18 @@ const parse = require("url").parse;
 const path = require("path");
 
 const server = http.createServer((req, res) => {
+
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Allow requests from any origin
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS'); // Allow specified HTTP methods
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type'); // Allow specified headers
+
+    // Handle preflight requests
+    if (req.method === 'OPTIONS') {
+        res.writeHead(200);
+        res.end();
+        return;
+    }
+    
     const { pathname } = parse(req.url);
     const route = pathname.split("/")[1];
 
